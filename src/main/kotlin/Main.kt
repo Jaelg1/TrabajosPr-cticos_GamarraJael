@@ -21,8 +21,8 @@ fun main(args: Array<String>) {
             println("Usted ha sido registrado con exito!")
         }
         2->{
-                val inicSes = iniciarSesion()
-                if(usuario.CUIL==27438445094){
+                val CUIL = iniciarSesion()
+                if(CUIL==27438445094){
             println("Usted ha iniciado sesion con exito")
             } else {
                 println("Vuelva a ingresar correctamente su CUIL")
@@ -50,16 +50,18 @@ fun nuevoUsuario(): Usuario {
     println("e-mail: ")
     val email = readLine()!!.toString()
 
-    val usuario=Usuario(DNI=DNI, CUIL=CUIL, nombre=Nombre, apellido=Apellido, domicilio=Domicilio, telefono=Telefono,
-    email=Email)
+    val usuario=Usuario(DNI=DNI, CUIL=CUIL, nombre=nombre, apellido=apellido, domicilio=domicilio, telefono=telefono,
+    email=email)
 
     return usuario
 }
-fun iniciarSesion(){
+fun iniciarSesion(): Long{
     println("CUIL: ")
     val CUIL = readLine()!!.toLong()
     println("Contraseña: ")
     val contrasenia = readLine()!!.toString()
+
+    return CUIL
 }
 fun registrarIncidente(){
     println("Categoria: ")
