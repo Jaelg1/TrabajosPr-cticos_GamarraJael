@@ -3,7 +3,8 @@ import kotlin.text.toInt as toInt1
 fun main(args: Array<String>) {
 
     var Usuario1=Usuario(43844509, 27438445094, "Jael", "Gamarra", "Calle 13, N 380",
-    "3564332441", "jaelgamarra15@gmail.com")
+        "3564332441", "jaelgamarra15@gmail.com")
+    val ListaUsuarios=ArrayList<Usuario>()
 
     println("     Municipalidad de Cordoba     ")
     println("¿Que operacion desea realizar?: ")
@@ -16,11 +17,16 @@ fun main(args: Array<String>) {
     when(operacion){
         1->{
             val usuario=nuevoUsuario()
+            ListaUsuarios.add(usuario)
             println("Usted ha sido registrado con exito!")
         }
         2->{
-            val inicSes=iniciarSesion()
+                val inicSes = iniciarSesion()
+                if(usuario.CUIL==27438445094){
             println("Usted ha iniciado sesion con exito")
+            } else {
+                println("Vuelva a ingresar correctamente su CUIL")
+                }
         }
         3->{
             val incidente=registrarIncidente()
@@ -28,7 +34,7 @@ fun main(args: Array<String>) {
         }
     }
 }
-fun nuevoUsuario() {
+fun nuevoUsuario(): Usuario {
     println("DNI: ")
     val DNI = readLine()!!.toInt1()
     println("CUIL: ")
@@ -43,6 +49,11 @@ fun nuevoUsuario() {
     val telefono = readLine()!!.toString()
     println("e-mail: ")
     val email = readLine()!!.toString()
+
+    val usuario=Usuario(DNI=DNI, CUIL=CUIL, nombre=Nombre, apellido=Apellido, domicilio=Domicilio, telefono=Telefono,
+    email=Email)
+
+    return usuario
 }
 fun iniciarSesion(){
     println("CUIL: ")
